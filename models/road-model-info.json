@@ -1,0 +1,10 @@
+{
+  "name": "segformer_b0_cityscapes.onnx",
+  "source": "https://huggingface.co/Xenova/segformer-b0-finetuned-cityscapes-1024-1024/resolve/main/onnx/model.onnx",
+  "bytes": 15200774,
+  "sha256": "142427caa45a47d57d5bd23b62c3bfc852fa7df0c6c2291c5ef34f581fa406bf",
+  "upstream": "https://huggingface.co/nvidia/segformer-b0-finetuned-cityscapes-1024-1024",
+  "license": "NVIDIA Source Code License for SegFormer - research/evaluation only",
+  "license_source": "https://github.com/NVlabs/SegFormer/blob/master/LICENSE",
+  "onnx_publisher": "Xenova"
+}

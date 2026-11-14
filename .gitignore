@@ -1,0 +1,18 @@
+# Local Python environments and generated files
+.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local runtime logs, settings, captures, and test outputs
+runtime/
+
+# Experimental weights that are not part of the application
+models/context/research_not_shipped/
+
+# Build output
+build/
+dist/
+*.egg-info/

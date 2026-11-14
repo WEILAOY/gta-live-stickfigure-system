@@ -1,0 +1,31 @@
+[
+  {
+    "file": "helicopter.onnx",
+    "repository": "Hunjun/yolo-tank-detection",
+    "revision": "2b0f956ad5363d19477ac00585679654e4c04c00",
+    "source": "https://huggingface.co/Hunjun/yolo-tank-detection/resolve/2b0f956ad5363d19477ac00585679654e4c04c00/optimized/student_quantized.onnx",
+    "sha256": "0659d6176855ee7a252268314bb8d1117f6ddba617cb3883e95ffc2b3b5b8cdf",
+    "classes": [
+      "Airplane",
+      "Helicopter",
+      "Person",
+      "Tank",
+      "Vehicle"
+    ],
+    "license_in_onnx_metadata": "AGPL-3.0",
+    "note": "Helicopter repo card says MIT while ONNX metadata says AGPL-3.0; retain both attribution facts, do not assert permissive relicensing. Research/evaluation build."
+  },
+  {
+    "file": "pistol.onnx",
+    "repository": "Hadi959/weapon-detection-yolov8",
+    "revision": "1c7397a7f9268ed60611650cdad936e306a3dc04",
+    "source": "https://huggingface.co/Hadi959/weapon-detection-yolov8/resolve/1c7397a7f9268ed60611650cdad936e306a3dc04/best.onnx",
+    "sha256": "e72be0b7574fd8364f562eaf5e5b2d8c08915410a67a8a2e5a982a29ac0659a1",
+    "classes": [
+      "pistol",
+      "knife"
+    ],
+    "license_in_onnx_metadata": "AGPL-3.0",
+    "note": "Helicopter repo card says MIT while ONNX metadata says AGPL-3.0; retain both attribution facts, do not assert permissive relicensing. Research/evaluation build."
+  }
+]

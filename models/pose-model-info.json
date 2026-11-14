@@ -1,0 +1,9 @@
+{
+  "name": "pose_estimation_mediapipe_2023mar.onnx",
+  "source": "https://huggingface.co/opencv/pose_estimation_mediapipe/resolve/main/pose_estimation_mediapipe_2023mar.onnx",
+  "bytes": 5557238,
+  "sha256": "9d89c599319a18fb7d2e28451a883476164543182bafca5f09eb2cf767ed2f3f",
+  "license": "Apache-2.0",
+  "publisher": "OpenCV Zoo / MediaPipe Pose",
+  "documentation": "https://github.com/opencv/opencv_zoo/tree/main/models/pose_estimation_mediapipe"
+}

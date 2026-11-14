@@ -1,0 +1,70 @@
+{
+  "description": "Analysis-only normalized HUD icon/digit features; never output art.",
+  "weapons": {
+    "rifle": {
+      "box": [
+        760,
+        62,
+        840,
+        90
+      ],
+      "count": 387,
+      "reference_times": [
+        842,
+        844,
+        845,
+        848,
+        850
+      ]
+    },
+    "pistol": {
+      "box": [
+        790,
+        28,
+        840,
+        56
+      ],
+      "count": 225,
+      "reference_times": [
+        1404,
+        1405,
+        1406,
+        1407,
+        1408
+      ]
+    },
+    "pistol_dark": {
+      "box": [
+        790,
+        28,
+        840,
+        56
+      ],
+      "count": 275,
+      "reference_times": [
+        1403.6,
+        1403.8,
+        1404,
+        1404.2
+      ]
+    },
+    "molotov": {
+      "box": [
+        798,
+        62,
+        840,
+        92
+      ],
+      "count": 90,
+      "reference_times": [
+        959,
+        960,
+        961,
+        963,
+        965,
+        967
+      ]
+    }
+  },
+  "sha256": "47f5a57873bbe7482c1fa37bf07bd97b322a4b0296913fb3da085cc7507f14d7"
+}

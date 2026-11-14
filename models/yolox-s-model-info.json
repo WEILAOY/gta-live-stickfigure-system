@@ -1,0 +1,13 @@
+{
+  "name": "YOLOX-S",
+  "source": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx",
+  "license": "Apache-2.0 (upstream repository)",
+  "license_source": "https://github.com/Megvii-BaseDetection/YOLOX/blob/main/LICENSE",
+  "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+  "bytes": 35858002,
+  "input_size": [
+    640,
+    640
+  ],
+  "documentation": "https://github.com/Megvii-BaseDetection/YOLOX/blob/main/demo/ONNXRuntime/README.md"
+}
