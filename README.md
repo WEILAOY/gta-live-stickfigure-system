@@ -1,39 +1,48 @@
-# 实时火柴人画面系统
+# 实时极简火柴人画面系统——可用于GTA直播
+# Minimalist Stick-Figure Visual System for GTA Streaming
 
-V0.32 是一款面向 Windows 的本地桌面工具：读取本地视频或 OBS 虚拟摄像机画面，分析人物、动物、车辆与环境，再用项目自带的火柴人和载具预设素材生成独立动画窗口，供预览或 OBS/直播软件捕获。推理在本机运行，不需要云端模型 API。输出画布为 1280×720；视频预览静音。
+**中文简介：** V0.32 是一款面向 Windows 的本地桌面工具，可读取本地视频或 OBS 虚拟摄像机画面，分析人物、动物、车辆与环境，并用项目自带的预设素材生成独立动画窗口，供 OBS 或直播软件捕获。推理在本机运行，不需要云端模型 API。输出画布为 1280×720，视频预览静音。本项目为独立工具，与 GTA 或其发行商无官方关联。
 
-## 功能
+**English:** Version 0.32 is a local Windows desktop application for GTA livestream scenes. It reads a local video or OBS Virtual Camera feed, analyzes people, animals, vehicles, and scenery, then renders preset stick-figure and vehicle assets in a separate window for OBS or streaming software to capture. Inference runs locally with no cloud model API. Output is 1280×720 and video preview is silent. This is an independent fan tool and is not affiliated with GTA or its publisher.
 
-- 检测人物、狗及多种载具，并跟踪画面位置。
-- 使用预设图元绘制人物动作和车辆视角；支持二维骨骼驱动、手动动作、主角绑定。
-- 可选显示地平线、道路边缘、建筑外轮廓、漫画阴影或背景色块。
-- 可选识别画面文字并以系统字体排版；部分战斗提示只提供实验性检测。
-- 可从本地视频播放，也可连接 OBS Virtual Camera；输出在独立的“火柴人动画输出”窗口。
+## 功能 / Features
 
-检测结果受视频清晰度、遮挡、视角和硬件影响。姿态、朝向、动作、道路和建筑识别都可能误检或漏检；这些结果不是精度保证。项目不会把原视频人物或车辆像素描摹成输出素材。枪械/火光、OCR 等实验功能及其局限，以应用内说明和模型目录文档为准。
+- 检测人物、狗和多种载具并跟踪位置。 / Detects people, dogs, and several vehicle classes and tracks their positions.
+- 使用预设素材绘制人物动作和车辆视角，支持二维骨骼驱动、手动动作与主角绑定。 / Renders preset character actions and vehicle views, with 2D pose-driven animation, manual actions, and a primary-subject binding.
+- 可选显示地平线、道路边缘、建筑外轮廓、漫画阴影或背景色块。 / Optional horizon, road edges, building outlines, comic shading, and flat-color backgrounds.
+- 可选识别画面文字并以系统字体排版；部分战斗提示仅为实验性检测。 / Optional on-screen text recognition with system-font rendering; some combat cues are experimental.
+- 支持本地视频或 OBS Virtual Camera；输出显示在独立的“火柴人动画输出”窗口。 / Accepts local video or OBS Virtual Camera input and renders to a separate “Stick-Figure Animation Output” window.
 
-## 安装与启动
+姿态、朝向、动作、道路和建筑分析可能误检或漏检，效果会受画质、遮挡、视角和硬件影响，不构成准确率或帧率保证。项目不会将原视频中的人物或车辆像素描摹为输出素材。枪械、火光和 OCR 等实验功能的限制见应用内说明及模型文档。
 
-建议使用 Windows 10/11、64 位 Python 3.13（安装时包含 Tkinter）和 FFmpeg/ffprobe。请先确认命令行能找到 `ffmpeg` 与 `ffprobe`。本仓库不附带 Python、FFmpeg、OBS 或测试视频。
+Pose, direction, action, road, and building analysis may produce false positives or misses. Results vary with video quality, occlusion, camera angle, and hardware; no accuracy or frame-rate guarantee is made. The project does not trace people or vehicles from source pixels into output assets. See the in-app notes and model documentation for experimental weapon, muzzle-flash, and OCR features.
 
-1. 克隆仓库，或从 GitHub 下载 ZIP 并解压。
-2. 双击 `安装检测依赖.cmd`。脚本会创建项目本地 `.venv` 并安装 `requirements.txt` 中的依赖；安装时会移除该环境内冲突的 ONNX Runtime CPU/DirectML 包，因此建议使用项目新建的 `.venv`。
-3. 双击 `启动软件.cmd`。
-4. 在应用中选择本地视频；使用实时输入时，先在 OBS 启动 Virtual Camera，再选择 OBS 虚拟摄像机并连接。
+## 安装与启动 / Installation
 
-首次安装需要网络下载 Python 依赖。模型权重随仓库提供，无需首次启动时另行下载。Windows 下优先使用 DirectML；不可用时回退 CPU。姿态分析使用 CPU。实际帧率会随视频和硬件变化。
+建议使用 Windows 10/11、64 位 Python 3.13（安装时包含 Tkinter）和 FFmpeg/ffprobe，并确保命令行可找到 `ffmpeg` 与 `ffprobe`。仓库不包含 Python、FFmpeg、OBS 或测试视频。
 
-命令行冒烟检查：
+Recommended: Windows 10/11, 64-bit Python 3.13 with Tkinter, and FFmpeg/ffprobe available on `PATH`. Python, FFmpeg, OBS, and sample videos are not included.
+
+1. 克隆仓库，或下载并解压 GitHub ZIP。 / Clone the repository or download and extract its GitHub ZIP.
+2. 双击 `安装检测依赖.cmd`。脚本会创建本地 `.venv` 并安装 `requirements.txt`；它会移除该环境中的冲突 ONNX Runtime CPU/DirectML 包，建议使用新建的 `.venv`。 / Run `安装检测依赖.cmd`. It creates `.venv` and installs `requirements.txt`; it removes conflicting ONNX Runtime CPU/DirectML packages from that environment, so use a fresh project environment.
+3. 双击 `启动软件.cmd`。 / Run `启动软件.cmd`.
+4. 选择本地视频；使用实时输入时，先在 OBS 启动 Virtual Camera，再在应用中连接。 / Select a local video, or start OBS Virtual Camera and connect to it for live input.
+
+首次安装需要联网下载 Python 依赖。模型权重随仓库提供。Windows 下优先使用 DirectML，不可用时回退 CPU；姿态分析使用 CPU。实际帧率取决于输入视频和硬件。
+
+An internet connection is needed to install Python dependencies. Model weights are included. Windows prefers DirectML and falls back to CPU; pose analysis uses CPU. Actual frame rate depends on the source video and hardware.
 
 ```powershell
 .\.venv\Scripts\python.exe main.py --smoke-test
 ```
 
-## 开发与测试
+## 开发与测试 / Development and Tests
 
-核心界面位于 `stickfigure/app.py`。`detection.py`、`vision.py` 和 `tracking.py` 负责识别与跟踪；`assets.py` 提供固定人物/载具素材；`rendering.py` 负责绘制；`road.py`、`buildings.py`、`ocr.py` 和 `context.py` 分别处理环境、文字与辅助识别。
+核心界面位于 `stickfigure/app.py`；识别和跟踪由 `detection.py`、`vision.py`、`tracking.py` 提供；`assets.py` 定义预设素材，`rendering.py` 负责绘制。`road.py`、`buildings.py`、`ocr.py` 与 `context.py` 处理环境、文字和辅助识别。
 
-测试脚本位于 `tools/`，使用安装依赖后的 Python 执行。例如：
+The main UI is in `stickfigure/app.py`. Detection and tracking are in `detection.py`, `vision.py`, and `tracking.py`; `assets.py` defines preset assets and `rendering.py` draws them. `road.py`, `buildings.py`, `ocr.py`, and `context.py` handle scenery, text, and auxiliary recognition.
+
+安装依赖后可运行以下测试： / Run these tests after installing dependencies:
 
 ```powershell
 .\.venv\Scripts\python.exe tools\test_frame_clipping.py
@@ -43,33 +52,38 @@ V0.32 是一款面向 Windows 的本地桌面工具：读取本地视频或 OBS 
 .\.venv\Scripts\python.exe tools\test_visuals.py
 ```
 
-应用也提供 `--video-smoke-test`、`--detect-smoke-test`、`--workflow-smoke-test` 和 `--performance-smoke-test` 参数；它们需要额外的本地视频输入。性能短测只代表该次视频、配置与硬件，不代表持续性能或 OBS 全链路速度。
+`--video-smoke-test`、`--detect-smoke-test`、`--workflow-smoke-test` 与 `--performance-smoke-test` 需要额外的本地视频。短时性能测量只代表对应视频、设置和硬件，不代表持续性能或 OBS 全链路速度。
 
-## 模型与使用范围
+The `--video-smoke-test`, `--detect-smoke-test`, `--workflow-smoke-test`, and `--performance-smoke-test` options require a local video. Short performance measurements apply only to the tested video, settings, and hardware; they do not represent sustained performance or end-to-end OBS throughput.
 
-模型来源、版本、SHA-256、预处理和授权材料见 [`models/README.md`](models/README.md)、各模型目录下的说明及许可文件。主要模型包括 YOLOX 人车检测、MediaPipe Pose、PP-OCR、道路/建筑语义分割，以及用于枪械和直升机类别的本地扩展模型。模型只提供分析参数，画面素材仍由项目预设提供。
+## 模型与使用范围 / Models and Scope
 
-各模型的授权相互独立，尤其注意：
+模型来源、版本、SHA-256、预处理和许可材料见 [`models/README.md`](models/README.md) 及各模型目录。模型提供分析参数，画面素材仍由项目预设提供。
 
-- YOLOX、MediaPipe Pose 和随附 OCR 模型有各自的 Apache-2.0 许可及署名材料。
-- SegFormer 道路模型随附 NVIDIA Source Code License，仅限研究或评估用途；查看 [`models/ROAD_MODEL_LICENSE.txt`](models/ROAD_MODEL_LICENSE.txt)。
-- `models/context/` 中扩展模型的权重元数据标注 AGPL-3.0；直升机模型卡同时写有 MIT，仓库保留了此授权信息差异，未宣称可按 MIT 重新授权。详情见 [`models/context/README.md`](models/context/README.md)。
-- RapidOCR 模型许可与归属记录见 [`models/ocr/MODEL_LICENSES.md`](models/ocr/MODEL_LICENSES.md)。
-- `models/context/research_not_shipped/` 是未采用的研究实验模型，不属于程序运行依赖，也不会随仓库发布。
+Model sources, revisions, SHA-256 hashes, preprocessing, and license notices are documented in [`models/README.md`](models/README.md) and the individual model folders. Models provide analysis parameters; rendered visuals come from project presets.
 
-使用者应逐项遵守相应第三方许可。项目不包含游戏视频；请自行确保输入视频、素材和直播内容的使用权。
+- YOLOX、MediaPipe Pose 和随附 OCR 模型按各自的 Apache-2.0 材料发布。 / YOLOX, MediaPipe Pose, and bundled OCR models carry their respective Apache-2.0 notices.
+- SegFormer 道路模型限研究或评估用途，见 [`models/ROAD_MODEL_LICENSE.txt`](models/ROAD_MODEL_LICENSE.txt)。 / The SegFormer road model is limited to research or evaluation; see [`models/ROAD_MODEL_LICENSE.txt`](models/ROAD_MODEL_LICENSE.txt).
+- `models/context/` 中扩展模型的权重元数据标注 AGPL-3.0；直升机模型卡另写 MIT。仓库保留此差异，不宣称可按 MIT 重新授权；详情见 [`models/context/README.md`](models/context/README.md)。 / Extension-model metadata in `models/context/` identifies AGPL-3.0, while the helicopter model card also states MIT. This discrepancy is documented without claiming MIT relicensing; see [`models/context/README.md`](models/context/README.md).
+- RapidOCR 许可与归属见 [`models/ocr/MODEL_LICENSES.md`](models/ocr/MODEL_LICENSES.md)。未采用的 `models/context/research_not_shipped/` 不属于运行依赖，也不会随仓库发布。 / RapidOCR attribution and licensing are in [`models/ocr/MODEL_LICENSES.md`](models/ocr/MODEL_LICENSES.md). The unused `models/context/research_not_shipped/` models are not runtime dependencies and are excluded from publication.
 
-## 项目性质与代码许可
+项目不包含游戏视频。使用者应遵守各第三方许可，并自行确保输入视频、素材和直播内容的使用权。
 
-作者以非盈利性质分享本项目，用于交流、学习与研究。项目自有代码目前未附开放源代码许可证；公开可见不等于获得修改、再发布或商业使用授权。需要使用授权时，请联系仓库所有者。第三方模型、依赖与素材不受本段替代，仍适用各自的许可。
+Game videos are not included. Users are responsible for following third-party licenses and ensuring they have rights to use their input videos, assets, and livestream content.
 
-## 目录
+## 项目性质与代码许可 / Project Status and Code License
 
-- `stickfigure/`：应用、检测、素材、追踪、渲染和界面代码。
-- `models/`：随附模型、来源信息、哈希与许可文件。
-- `tools/`：测试、诊断、基准测试及导出脚本。
-- `V0.*_*.md`：各版本功能验证记录。
-- `AGENTS.md`：项目素材边界和实现约束。
+作者以非盈利性质分享本项目，用于交流、学习与研究。项目自有代码目前未附开放源代码许可证；公开可见不等于获得修改、再发布或商业使用授权。第三方模型、依赖和素材仍适用各自许可。
+
+The author shares this project for non-profit discussion, learning, and research. The project’s own code currently has no open-source license; public visibility does not grant permission to modify, redistribute, or use it commercially. Third-party models, dependencies, and assets remain under their respective licenses.
+
+## 目录 / Repository Layout
+
+- `stickfigure/`：应用、检测、素材、追踪、渲染和界面代码。 / Application, detection, assets, tracking, rendering, and UI code.
+- `models/`：模型、来源信息、哈希和许可文件。 / Models, provenance, hashes, and license notices.
+- `tools/`：测试、诊断、基准测试和导出脚本。 / Tests, diagnostics, benchmarks, and export scripts.
+- `V0.*_*.md`：版本功能验证记录。 / Feature validation notes by version.
+- `AGENTS.md`：项目素材边界和实现约束。 / Asset boundaries and project implementation constraints.
 
 ---
 
